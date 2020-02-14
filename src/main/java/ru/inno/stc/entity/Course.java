@@ -12,11 +12,12 @@ public class Course {
     private String title;
 
     public Course() {
-
+        id = new ObjectId();
     }
 
     public Course(String code, String title) {
         this();
+        this.code = code;
         this.title = title;
     }
 
@@ -48,7 +49,7 @@ public class Course {
     public String toString() {
         return new StringJoiner(", ", Course.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
-                .add("code=" + code)
+                .add("code='" + code + "'")
                 .add("title='" + title + "'")
                 .toString();
     }

@@ -12,45 +12,37 @@ public class App {
     MongoDbProducer producer = new MongoDbProducer();
     producer.init();
 
-
     // create some courses
-    List<Course> courses = new ArrayList<>();
-    Course tempCourse1 = new Course("AG-1", "Air Guitar - The Ultimate Guide");
-    courses.add(tempCourse1);
-    Course tempCourse2 = new Course("PM-1", "The Pinball Masterclass");
-    courses.add(tempCourse2);
-    producer.insertCourse(tempCourse1);
-    producer.insertCourse(tempCourse2);
-    //producer.addCourse(tempCourse1);
+    Course tempCourse1 = new Course("AG-2", "Air Guitar - The Ultimate Guide");
+    Course tempCourse2 = new Course("PM-3", "The Pinball Masterclass");
+    //producer.insertCourseNew(tempCourse2);
+    //producer.insertCourse(tempCourse2);
+    //Course newCourse = new Course("AG-1", "Air Guitar - The Ultimate Guide-1");
+    //producer.updateCourse(tempCourse1, newCourse);
+    /*producer.getCoursesJson().forEach(c -> {
+      System.out.println(c.toString());
+    });*/
+    producer.getCoursesNew().forEach(c -> {
+      System.out.println(c.toString());
+    });
+    System.out.println("--------------------");
 
-    //instructor.setCourses(courses);
-    //producer.addObject(instructor, "Instructor");
+    producer.createIndex();
+    producer.getCoursesNew().forEach(c -> {
+      System.out.println(c.toString());
+    });
+    //producer.mapReduce();
+    //producer.updateCourse(tempCourse1, newCourse);
+    /*producer.deleteCourse(tempCourse1);
+    producer.getCourses().forEach(c -> {
+      System.out.println(c.toString());
+    });
 
+    producer.deleteCourse(newCourse);
+    producer.getCourses().forEach(c -> {
+      System.out.println(c.toString());
+    });*/
 
-    System.out.println("==========================================");
-    //producer.getObjectList("Instructor", Instructor.class);
-    System.out.println("================DELETE=================");
-    //producer.deleteCourse("title", "Air Guitar - The Ultimate Guide");
-    producer.findCourses().forEach(System.out::println);
-    producer.mapReduce();
-    System.out.println("================UPDATE=================");
-    producer.updateCourse("title", "The Pinball Masterclass", "The Pinball Masterclass2");
-    producer.findCourses().forEach(System.out::println);
-
-    //producer.deleteCourseByFilter("title", "Air Guitar - The Ultimate Guide");
-    //producer.findCourses().forEach(System.out::println);
-    System.out.println("==========================================");
-    //producer.getCourses().forEach(System.out::println);
-    System.out.println("==========================================");
-    //producer.getObjectList("Instructor", Instructor.class).forEach(System.out::println);
-    System.out.println("==========================================");
-    //producer.getCourses("The Pinball Masterclass").forEach(System.out::println);
-    System.out.println("===================ID===================");
-    //producer.updateCourse("title", "The Pinball Masterclass", 2);
-    System.out.println("==========================================");
-    //producer.getCourses(1).forEach(System.out::println);
-    System.out.println("==========================================");
-    //producer.getCourses(2).forEach(System.out::println);
     producer.close();
   }
 }
